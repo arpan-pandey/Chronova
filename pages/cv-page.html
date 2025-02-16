@@ -876,10 +876,11 @@
         cv[lastIndex].style.display = "none";
         cv[index].style.display = "block";
 
-        if (defaultPos != 0) {
-          cvDownloadButtons[0].style.display = "block"; // removing cv download button if currently viewing cv isn't first one
+        // since there are no other CVs except the first one
+        if (index == 0) {
+          cvDownloadButtons[0].style.display = "block"; // showing cv download button if currently viewing cv is the first one
         } else {
-          cvDownloadButtons[defaultPos].style.display = "block"; // showing cv download button if currently viewing cv is the first one
+          cvDownloadButtons[0].style.display = "none"; // showing cv download button if currently viewing cv is the first one
         }
 
         lastIndex = index; // updating last index for future use
