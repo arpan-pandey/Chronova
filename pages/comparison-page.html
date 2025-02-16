@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="A page containing the comparisons of all webpages and their references, for each page of our website." />
+    <!-- website/webpage description -->
+
+    <meta
+      name="keywords"
+      content="chrnova references, comparison of chronova, homepage reference, products page reference, blog reference, about page reference, reviews reference" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="../images/tab--icon.ico" />
+
+    <script defer src="../js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+      }
+
+      main {
+        position: relative;
+        flex-direction: column;
+        background: linear-gradient(
+          to bottom,
+          var(--darkest-blue) 20%,
+          var(--dark-blue),
+          var(--darkest-blue) 80%
+        ); /* simple gradient */
+        padding: 70px 0 128px 0;
+        font-family: "Lora", serif;
+        letter-spacing: 1px;
+        color: var(--darkest-blue);
+      }
+
+      #buttons_wrapper {
+        position: sticky;
+        top: 14px;
+        display: flex;
+        width: 80%;
+        margin: 48px 0;
+        z-index: 5;
+        background-color: var(--darkest-blue);
+      }
+
+      #buttons_wrapper a {
+        all: unset;
+        /* since everything is set to unset, the center utility class wont work. (css loads  after html so everything from center utility class son't be applied) */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        color: var(--lightest-blue);
+        font-family: "Lora", serif;
+        padding: 20px;
+        border: 1px solid var(--medium-blue);
+        user-select: none;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      /* styling the div created by javascript */
+      .button--before {
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        background-color: var(--medium-blue);
+        top: 0;
+        left: 0;
+        transition: left 0.4s ease-in-out;
+        z-index: 1;
+      }
+
+      .comparison--section {
+        flex-direction: column;
+        height: 100%;
+        width: 70%;
+        box-sizing: border-box;
+        padding: 2% 5%;
+        margin: 20px 0;
+        background-color: var(--lightest-blue);
+        gap: 20px;
+        display: none;
+      }
+
+      .comparison--header {
+        flex-direction: column;
+      }
+
+      .comparison--section p {
+        color: var(--dark-blue);
+        letter-spacing: 2px;
+        line-height: 30px;
+        font-family: "Lora", serif;
+        text-align: center;
+      }
+
+      .comparison--main {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .comparison--main h2 {
+        font-size: 28px;
+        color: var(--darker-blue);
+        font-family: "Cormorant", serif;
+        width: 100%;
+        padding-left: 40px;
+      }
+
+      .company {
+        font-family: "Cinzel", serif;
+        color: var(--dark-blue);
+        font-weight: 600;
+      }
+
+      .link {
+        color: var(--dark-blue);
+        font-weight: bold;
+        transition: color 0.2s ease-in-out;
+      }
+
+      .link:hover {
+        color: var(--medium-blue);
+      }
+
+      .comparison--image_wrapper {
+        margin: unset;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 10px;
+      }
+
+      figcaption {
+        margin-bottom: 20px;
+        color: var(--medium-blue);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .comparison--image_wrapper img {
+        height: 100%;
+        width: 80%;
+        object-fit: cover;
+        transition: all 0.2s ease-in-out;
+        scale: 1;
+        box-shadow: 1px 1px 7px var(--darkest-blue);
+      }
+
+      .comparison--desc {
+        margin-bottom: 64px;
+      }
+
+      .wip-message {
+        height: 225px;
+      }
+    </style>
+
+    <title>Chronova | Comparison</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="header--nav">
+        <div id="company--logo_wrapper">
+          <a href="../index.html" target="_self" id="company--logo">
+            <img src="../images/company--logo.png" alt="company_logo" id="logo--image" />
+            <span>Chronova</span>
+          </a>
+        </div>
+        <div id="nav--link_wrapper" class="center">
+          <ul>
+            <a href="../index.html" class="nav--link">
+              <li>HOME</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./product-page.html" class="nav--link">
+              <li>PRODUCTS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./blog-page.html" class="nav--link">
+              <li>BLOG</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./about-page.html" class="nav--link">
+              <li>ABOUT US</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./review-page.html" class="nav--link">
+              <li>TESTIMONIALS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./research-page.html" class="nav--link">
+              <li>RESEARCH</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="center">
+      <!-- <h1 class="main--headings" style="color: var(--lightest-blue)">comparison</h1> -->
+      <div id="buttons_wrapper">
+        <!-- setting link to # because there is no hyperlink to reference to -->
+        <a href="#">Homepage</a>
+        <a href="#">Products</a>
+        <a href="#">Blog</a>
+        <a href="#">About Page</a>
+        <a href="#">Reviews</a>
+      </div>
+
+      <div class="comparison--section center" id="homepage--comparison">
+        <div class="comparison--header center">
+          <h2 class="main--headings">Comparison of Homepage</h2>
+          <p>
+            The homepage of
+            <span class="company">CHRONOVA</span> is heavily based on the
+            <a
+              href="https://www.behance.net/gallery/153237357/Luxury-Watch-Website-Design"
+              class="link"
+              target="_blank">
+              Luxury Watch Website Design</a
+            >
+            by
+            <a href="https://www.cmarix.com" class="link" target="_blank">
+              CMARIX InfoTech</a
+            >. The design and overall layout is very similar, with some key differences,
+            which are listed below:
+          </p>
+        </div>
+        <div class="comparison--main center">
+          <h2 class="comparison--titles">Landing Section</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/homepage/ref-landing.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/homepage/home-landing.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            Here, the overall layout is similar but the there are differences in the
+            navigation bar, slider indicators' location and style, and the layout of the
+            slider itself.<br />(The navigation bar is re-used in all webpages)
+          </p>
+          <br /><!-- seperation -->
+          <h2 class="comparison--titles">Featured Products</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/homepage/ref-featured.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/homepage/home-featured.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            The layout is almost identical here, with differences only seen in the button
+            at the bottom, and the background of the products.
+          </p>
+          <br /><!-- seperation -->
+          <h2 class="comparison--titles">Collections</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/homepage/ref-collection.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/homepage/home-collection.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            The layout is similar here too, but we have added extra collections in ours,
+            with a hover effect that makes text and borders appear, which look similar to
+            the reference collection.
+          </p>
+          <br /><!-- seperation -->
+          <h2 class="comparison--titles">Dials/Awards</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/homepage/ref-dial.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/homepage/home-award.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            The reference design has a section for selecting dials for the watch, which we
+            replaced with hypothetical awards for out hypothetical company. The award
+            section has a hover effect that displays the name of the award hovered.
+          </p>
+          <br /><!-- seperation -->
+          <h2 class="comparison--titles">Footer</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/homepage/ref-footer.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/homepage/home-footer.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            The footer of our website is almost identical to the one in the reference,
+            with only differences being the title of the form, and the absence of one
+            column.<br />(The footer is also re-used in all webpages)
+          </p>
+        </div>
+      </div>
+      <div class="comparison--section center" id="products--comparison">
+        <span class="center wip-message"
+          >WORK IN PROGRESS! (this page was not my part)</span
+        >
+      </div>
+      <div class="comparison--section center" id="blog--comparison">
+        <span class="center wip-message"
+          >WORK IN PROGRESS! (this page was not my part)</span
+        >
+      </div>
+      <div class="comparison--section center" id="about--comparison">
+        <div class="comparison--header center">
+          <h2 class="main--headings">Comparison of About Page</h2>
+          <p>
+            The about page of
+            <span class="company">CHRONOVA</span> is heavily based on
+            <a
+              href="https://dribbble.com/shots/22070946-Meet-our-team-Untitled-UI"
+              class="link"
+              target="_blank">
+              Meet Our Team - Untitled UI</a
+            >
+            design by
+            <a href="https://dribbble.com/jordanhughes" class="link" target="_blank"
+              >Jordan Hughes</a
+            >
+            , and the ninth entry on
+            <a
+              href="https://www.codingnepalweb.com/10-profile-card-template-designs-html-css/"
+              class="link"
+              target="_blank">
+              Top 10 Profile Card Template Designs in HTML & CSS</a
+            >
+            by
+            <a href="https://www.codingnepalweb.com" class="link" target="_blank"
+              >Coding Nepal</a
+            >. The design and overall layout is very similar to these references, with
+            some key differences which are listed below:
+          </p>
+        </div>
+        <div class="comparison--main center">
+          <h2 class="comparison--titles">Landing Section</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/about/ref-landing.png" />
+            <figcaption>fig:- Reference 1</figcaption>
+            <img src="../images/research/about/ref-cards.jpg" />
+            <figcaption>fig:- Reference 2</figcaption>
+            <img src="../images/research/about/about-landing.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            Here, the overall layout from the first reference is very similar due to the
+            same content and placement of buttons. The buttons' content however, is
+            different.
+            <br /><br />
+            Looking at the cards from reference two and in the actual page itself, they
+            are identical, with only difference being the content layout inside the cards.
+          </p>
+          <br /><!-- seperation -->
+          <h2 class="comparison--titles">Form</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/about/ref-form.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/about/about-form.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">
+            The form layout is identical in terms of layout and design of input fields,
+            with there being difference in one of the fields (phone >> subject). The left
+            part of the form is also different since our form has an image instead of
+            company details.
+          </p>
+        </div>
+        <div class="comparison--header center">
+          <h2 class="main--headings">Comparison of CV Page</h2>
+          <p>
+            The CV page's CV of
+            <span class="company">CHRONOVA</span> is a direct copy of the
+            <a
+              href="https://www.canva.com/templates/EAFR7mKO3IU-black-and-white-simple-visual-artist-resume/"
+              class="link"
+              target="_blank">
+              Black and White Simple Visual Artist Resume</a
+            >
+            design on
+            <a href="https://www.canva.com" class="link" target="_blank"> Canva</a> , by
+            <a href="https://www.canva.com/p/rayyastudio/" class="link" target="_blank"
+              >Rayya Studio</a
+            >. The design and overall layout is a direct copy, which can be seen below:
+          </p>
+        </div>
+        <div class="comparison--main center">
+          <h2 class="comparison--titles">CV</h2>
+          <figure class="comparison--image_wrapper center">
+            <img src="../images/research/about/ref-cv.png" />
+            <figcaption>fig:- Reference</figcaption>
+            <img src="../images/research/about/cv-cv.png" />
+            <figcaption>fig:- Actual Page</figcaption>
+          </figure>
+          <hr style="margin: 10px 0; width: 100%" />
+          <p class="comparison--desc">The layout is fully based on the reference.</p>
+        </div>
+      </div>
+      <div class="comparison--section center" id="testimonials--comparison">
+        <span class="center wip-message"
+          >WORK IN PROGRESS! (this page was not my part)</span
+        >
+      </div>
+
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h3 id="company--name">CHRONOVA</h3>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h3 class="footer--headings">Quick Links</h3>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h3 class="footer--headings">Experience in Person?</h3>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+  <script>
+    //selecting all the required elements
+    const buttonsWrapper = document.querySelector("#buttons_wrapper");
+    const buttons = document.querySelectorAll("#buttons_wrapper a");
+    const beforeElement = document.createElement("div"); //creating a new div
+    const comparisonContainers = document.querySelectorAll(".comparison--section");
+    let defaultPos;
+    var lastIndex;
+
+    beforeElement.classList.add("button--before"); //adding a class to the previously created div, so that styling can be done using css
+    buttonsWrapper.appendChild(beforeElement); //appending this newly created div to the button wrapper
+
+    //function that runs when the window is first loaded
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      //new URLSearchParams(window.location.search) creates an object of a built in JS API which lets one pass parameters from a hyperlink
+
+      // setting defaultPos to be either parameter value or 0 (default value, incase the cv-page.html file is opened directly without any link containing a parameter)
+      defaultPos = urlParams.has("comparisonIndex")
+        ? urlParams.get("comparisonIndex")
+        : 0;
+
+      moveBeforeElement(defaultPos);
+      comparisonContainers[defaultPos].style.display = "block";
+      lastIndex = defaultPos;
+    };
+
+    function moveBeforeElement(index) {
+      //function that calculates and positions the before element using the left value of the element so that it highlights each button perfectly
+      beforeElement.style.left = `${index * 20}%`;
+    }
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); // to prevent page reloading everytime a button is clicked
+
+        moveBeforeElement(index);
+
+        comparisonContainers[lastIndex].style.display = "none";
+        comparisonContainers[index].style.display = "block";
+        lastIndex = index; // updating last index for future use
+      });
+    });
+  </script>
+</html>

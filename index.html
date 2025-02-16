@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="Homepage for our e-commerce watch business Chronova." />
+    <!-- website/webpage description -->
+
+    <meta
+      name="keywords"
+      content="premium watches, luxury watches, designer watches, men's watches, women's watches, chronova" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- external css for styling -->
+
+    <link rel="icon" href="./images/tab--icon.ico" />
+    <!-- linking image for browser tab icon -->
+
+    <script defer src="./js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+      }
+
+      #landing--section {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #hero--section {
+        background: linear-gradient(
+          120deg,
+          var(--darkest-blue),
+          var(--darker-blue) 70%,
+          var(--darkest-blue)
+        ); /* Simple angled gradient for hero-section background */
+        height: 600px;
+        width: 100%;
+        user-select: none;
+      }
+
+      #hero--section aside {
+        width: 10%;
+        border-right: 1px solid var(--dark-blue);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        color: var(--lightest-blue);
+        user-select: none;
+      }
+      .hero--item_index {
+        flex: 1;
+        border-top: 1px solid var(--dark-blue);
+      }
+      .active_index {
+        /* !important makes sure that the item-index with active class will have the following chararcteristics above anything else */
+        font-size: 30px !important;
+        opacity: 1 !important;
+      }
+      .hero--item_index span {
+        font-size: 20px;
+        opacity: 0.3;
+        transition: all 0.6s ease-in-out;
+      }
+
+      .hero--content_wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        overflow: hidden;
+        left: 10%;
+      }
+
+      .hero--label_container {
+        opacity: 0;
+        transform: translateX(
+          -100%
+        ); /*making sure all labels (texts) are out of view of container, until their animation plays*/
+        margin-left: 5%;
+        transition: all 2s ease-in-out;
+      }
+
+      .hero--label_container h1 {
+        margin: 0;
+        color: var(--lightest-blue);
+        font-family: "Cormorant", serif;
+        font-weight: 600;
+        font-size: 700%;
+      }
+
+      .hero--image_container {
+        transform: translateX(
+          100%
+        ); /*making sure all images are out of view of container, until their animation plays*/
+        margin: 0;
+        opacity: 0;
+        margin-right: 15%;
+        transition: all 2s ease-in-out;
+      }
+
+      .hero--image_container img {
+        scale: 0.85;
+      }
+
+      .active_hero--translate {
+        transform: translateX(0%);
+      }
+      .active_hero--opacity {
+        opacity: 1;
+      }
+
+      main {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      #featured--products_section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1%;
+        width: 100%;
+        padding-top: 16px;
+      }
+
+      #featured--products_content {
+        margin: 2% 0;
+        height: 80%;
+        width: 80%;
+        flex-direction: column;
+        font-family: "Lora", serif;
+      }
+
+      #products--cards_wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .product--card {
+        height: 100%;
+        width: 32%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        transition: all 0.2s ease-in-out;
+      }
+      .product--card:hover {
+        scale: 1.05;
+      }
+
+      #products--cards_wrapper:hover .product--card:not(:hover) {
+        opacity: 0.5;
+      }
+
+      .product--img_wrapper {
+        height: 80%;
+        margin: 0;
+        background-color: var(--lightest-blue);
+        user-select: none;
+      }
+      .product--img {
+        height: 100%;
+        width: 100%;
+        scale: 0.78; /*default scale of images*/
+      }
+
+      .product--card:nth-of-type(1) .product--img {
+        transform: translateY(-5%); /*adjusting the position of first image*/
+      }
+      .product--card:nth-of-type(2) .product--img {
+        scale: 0.9; /*adjusting the scale of second image*/
+      }
+      .product--card:nth-of-type(3) .product--img {
+        scale: 0.86; /*adjusting the scale of third image*/
+      }
+
+      .product--info_wrapper {
+        height: 18%;
+        margin-top: 24px;
+        flex-direction: column;
+      }
+      .product--name {
+        margin: 0;
+        height: 50%;
+        color: var(--darker-blue);
+        font-family: "Cormorant", serif;
+        font-size: 200%;
+        font-weight: bolder;
+      }
+      .product--info_wrapper p {
+        height: 25%;
+        margin: 0;
+        font-size: 90%;
+      }
+      .product--model {
+        font-weight: 500;
+        color: var(--darker-blue);
+        letter-spacing: 2px;
+      }
+      .product--detail {
+        font-family: "Lora", serif;
+        color: var(--medium-blue);
+        font-style: italic;
+      }
+
+      #collections--gallery_section {
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 1200px;
+      }
+
+      #collections--gallery_wrapper {
+        height: 100%;
+        width: 100%;
+      }
+
+      #collections--gallery {
+        height: 100%;
+        width: 100%;
+        table-layout: fixed;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid var(--medium-blue);
+        border-collapse: collapse;
+      }
+
+      .gallery--cell {
+        user-select: none; /* there is no need for selecting any of the cells */
+        position: relative;
+      }
+
+      /*for left and right lines for every image*/
+      .gallery--cell:before,
+      .gallery--cell:after {
+        height: 0%;
+        position: absolute;
+        content: "";
+        width: 0.5px;
+        background-color: var(--light-blue);
+        z-index: 3;
+        transition: all 0.4s ease;
+        top: 50%;
+        pointer-events: none; /* to ensure that the after and before elements dont interfere with the cell hovering event*/
+      }
+      .gallery--cell:before {
+        left: 32px;
+      }
+      .gallery--cell:after {
+        right: 32px;
+      }
+
+      /* Adjusting position and expanding height of pseudo-elements for .gallery--cell elements with the .hover-active class. */
+      .gallery--cell.hover-active:before,
+      .gallery--cell.hover-active:after {
+        top: 5%;
+        height: 90%;
+      }
+
+      .cell--top_layer {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        top: 0;
+      }
+
+      /* for top and bottom lines for every image */
+      .cell--top_layer:before,
+      .cell--top_layer:after {
+        width: 0%;
+        pointer-events: none; /* to ensure that the after and before elements dont interfere with the cell hovering event*/
+        position: absolute;
+        content: "";
+        height: 0.5px;
+        background-color: var(--light-blue);
+        z-index: 2;
+        transition: all 0.4s ease;
+        left: 50%;
+      }
+      .cell--top_layer:before {
+        top: 7%;
+      }
+      .cell--top_layer:after {
+        bottom: 7%;
+      }
+      .cell--top_layer:hover:before,
+      .cell--top_layer:hover:after {
+        left: 3%;
+        width: 94%;
+      }
+
+      .cell--text {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        top: 44%;
+        z-index: 1;
+        color: var(--lighter-blue);
+        font-family: "Cormorant", serif;
+        font-weight: 500;
+        font-size: 200%;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      /* making content opaque for .cell--text elements with the .hover-active class. */
+      .cell--text.hover-active {
+        opacity: 1;
+      }
+
+      .cell--img {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        filter: brightness(50%);
+        transition: filter 0.3s ease-in-out;
+
+        /* Setting lower brightness for .cell--img elements with the .hover-active class. */
+      }
+      .cell--img.hover-active {
+        filter: brightness(15%);
+      }
+
+      #awards_section {
+        width: 100%;
+
+        flex-direction: column;
+        user-select: none;
+        background: linear-gradient(
+          150deg,
+          var(--darkest-blue) 30%,
+          var(--darker-blue) 80%
+        );
+        padding: 100px 0;
+        gap: 96px;
+      }
+
+      #award--img_wrapper {
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .award--img {
+        transition: all 0.2s ease-in-out;
+        height: 250px;
+        aspect-ratio: 1;
+        padding: 24px;
+      }
+
+      .award--img:hover {
+        scale: 1.1;
+      }
+
+      #award--img_wrapper:hover .award--img:not(:hover) {
+        opacity: 0.3;
+      }
+
+      #award--name_wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .award--name {
+        transition: all 0.2s ease;
+        padding: 0 8px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Cinzel", serif;
+        font-weight: 100;
+        font-size: 26px;
+        background: linear-gradient(90deg, #bfa97a, #d9c8a1, #c8b28d, #a89268);
+        background-clip: text;
+        color: transparent;
+        opacity: 0;
+      }
+
+      #quote--section {
+        height: 100%;
+        width: 100%;
+        background-color: var(--lightest-blue);
+        padding: 32px 0;
+      }
+
+      #quote--content {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 64px 0;
+      }
+
+      #quote--text {
+        color: var(--darker-blue);
+        font-family: "Cinzel", serif;
+        font-weight: 300;
+        letter-spacing: 3px;
+        font-size: 310%;
+        opacity: 0.8;
+      }
+
+      #quote--author {
+        align-self: flex-end;
+        font-family: "Cinzel", serif;
+        font-size: 120%;
+        color: var(--medium-blue);
+        font-weight: 600;
+      }
+
+      /*Adding responsiveness of different elements for very big monitors */
+      @media only screen and (min-height: 901px) and (max-height: 1100px) {
+        header {
+          height: 180px;
+        }
+        #company--logo {
+          font-size: 280%;
+        }
+        .nav--link {
+          font-size: 135%;
+        }
+        #hero--section {
+          height: 900px;
+        }
+        .hero--label_container h1 {
+          font-size: 1000%;
+        }
+        .hero--image_container {
+          margin-right: 20%;
+        }
+        .hero--image_container img {
+          scale: 1.1;
+        }
+        #featured--products_section {
+          height: calc(100% + 200px);
+        }
+
+        #sliding--awards_wrapper {
+          height: 350px;
+        }
+        .award_container img {
+          height: 350px;
+        }
+
+        @keyframes scrollLeft {
+          to {
+            left: -398px;
+          }
+        }
+      }
+
+      /*Adding responsiveness of different elements for bigger monitors */
+      @media only screen and (min-height: 769px) and (max-height: 900px) {
+        header {
+          height: 144px;
+        }
+        #hero--section {
+          height: 720px;
+        }
+      }
+
+      /*Adding responsiveness of different elements for small monitors */
+      @media only screen and (min-height: 721px) and (max-height: 768px) {
+        header {
+          height: 130px;
+        }
+        #hero--section {
+          height: 650px;
+        }
+      }
+    </style>
+
+    <title>Chronova | Home</title>
+  </head>
+  <body>
+    <section id="landing--section">
+      <header id="header">
+        <nav id="header--nav">
+          <div id="company--logo_wrapper">
+            <a href="./index.html" target="_self" id="company--logo">
+              <img src="./images/company--logo.png" alt="company_logo" id="logo--image" />
+              <span>Chronova</span>
+            </a>
+          </div>
+          <div id="nav--link_wrapper" class="center">
+            <ul>
+              <a href="./index.html" class="nav--link active">
+                <li>HOME</li>
+              </a>
+              <div class="link--seperator"></div>
+              <a href="./pages/product-page.html" class="nav--link">
+                <li>PRODUCTS</li>
+              </a>
+              <div class="link--seperator"></div>
+              <a href="./pages/blog-page.html" class="nav--link">
+                <li>BLOG</li>
+              </a>
+              <div class="link--seperator"></div>
+              <a href="./pages/about-page.html" class="nav--link">
+                <li>ABOUT US</li>
+              </a>
+              <div class="link--seperator"></div>
+              <a href="./pages/review-page.html" class="nav--link">
+                <li>TESTIMONIALS</li>
+              </a>
+              <div class="link--seperator"></div>
+              <a href="./pages/research-page.html" class="nav--link">
+                <li>RESEARCH</li>
+              </a>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <section id="hero--section" class="center">
+        <aside>
+          <div id="empty" style="height: 16.65%"></div>
+          <div class="hero--item_index center">
+            <span>&#11201;</span>
+          </div>
+          <div class="hero--item_index center">
+            <span>&#11201;</span>
+          </div>
+          <div class="hero--item_index center">
+            <span>&#11201;</span>
+          </div>
+          <div class="hero--item_index center">
+            <span>&#11201;</span>
+          </div>
+        </aside>
+        <div class="hero--content_wrapper" id="hero--luxury">
+          <article class="hero--label_container">
+            <h1>
+              Timeless<br />
+              <span style="display: inline-block; transform: translateX(30%)"
+                >Elegance,</span
+              >
+            </h1>
+          </article>
+          <figure class="hero--image_container">
+            <img
+              src="./images/products/luxury_watch_transparent.png"
+              alt="luxury_watch_transparent image" />
+          </figure>
+        </div>
+        <div class="hero--content_wrapper" id="hero--smart">
+          <article class="hero--label_container">
+            <h1>
+              Forward<br />
+              <span style="display: inline-block; transform: translateX(30%)"
+                >Evolution,</span
+              >
+            </h1>
+          </article>
+          <figure class="hero--image_container">
+            <img
+              src="./images/products/smart_watch_transparent.png"
+              alt="smart_watch_transparent image" />
+          </figure>
+        </div>
+        <div class="hero--content_wrapper" id="hero--minimalist">
+          <article class="hero--label_container">
+            <h1>
+              Polished<br />
+              <span style="display: inline-block; transform: translateX(30%)"
+                >Simplicity,</span
+              >
+            </h1>
+          </article>
+          <figure class="hero--image_container">
+            <img
+              src="./images/products/minimalist_watch_transparent.png"
+              alt="minimalist_watch_transparent image" />
+          </figure>
+        </div>
+        <div class="hero--content_wrapper" id="hero--dress">
+          <article class="hero--label_container">
+            <h1>
+              Graceful<br />
+              <span style="display: inline-block; transform: translateX(30%)"
+                >Precision.</span
+              >
+            </h1>
+          </article>
+          <figure class="hero--image_container">
+            <img
+              src="./images/products/dress_watch_transparent.png"
+              alt="dress_watch_transparent image" />
+          </figure>
+        </div>
+      </section>
+    </section>
+    <main class="center">
+      <section id="featured--products_section">
+        <div id="featured--products_content" class="center">
+          <h2 class="main--headings">Featured Products</h2>
+          <div id="products--cards_wrapper">
+            <div class="product--card">
+              <figure class="product--img_wrapper">
+                <img
+                  src="./images/products/luxury_watch_transparent.png"
+                  alt="luxury_watch_transparent"
+                  class="product--img" />
+              </figure>
+              <article class="product--info_wrapper center">
+                <h3 class="product--name center">Timeless Luxe</h3>
+                <p class="product--model">AURUM-88</p>
+                <p class="product--detail">Platinum | Diamond Coating | Titanium Strap</p>
+              </article>
+            </div>
+            <div class="product--card">
+              <figure class="product--img_wrapper">
+                <img
+                  src="./images/products/vintage_watch_transparent.png"
+                  alt="vintage_watch_transparent"
+                  class="product--img" />
+              </figure>
+              <article class="product--info_wrapper center">
+                <h3 class="product--name center">Antique Essence</h3>
+                <p class="product--model">EPOCH-19/24</p>
+                <p class="product--detail">Titanium | Tourbillon | Alligator Leather</p>
+              </article>
+            </div>
+            <div class="product--card">
+              <figure class="product--img_wrapper">
+                <img
+                  src="./images/products/smart_watch_transparent.png"
+                  alt="smart_watch_transparent"
+                  class="product--img" />
+              </figure>
+              <article class="product--info_wrapper center">
+                <h3 class="product--name center">Future Edge</h3>
+                <p class="product--model">ORBIT-3.6.0</p>
+                <p class="product--detail">Aluminum | 4K Display | 5G</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <a
+          href="./product-page.html"
+          id="featured_products--button"
+          class="main--section_buttons"
+          >Explore all products</a
+        >
+      </section>
+      <hr />
+      <!-- horizontal divider between sections -->
+      <section id="collections--gallery_section" class="center">
+        <h2 class="main--headings">Our Collections</h2>
+        <div id="collections--gallery_wrapper">
+          <table id="collections--gallery">
+            <!-- Row 1 -->
+            <tr>
+              <td rowspan="2" colspan="3" class="gallery--cell">
+                <span class="cell--text center">Luxury Watches</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_luxury.jpg"
+                  alt="gallery_luxury"
+                  class="cell--img" />
+              </td>
+              <td colspan="3" style="width: 40%" class="gallery--cell">
+                <span class="cell--text center">Women's Collections</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_women.jpg"
+                  alt="gallery_women"
+                  class="cell--img" />
+              </td>
+              <td colspan="2" class="gallery--cell">
+                <span class="cell--text center">Smart Watches</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_smart.jpg"
+                  alt="gallery_smart"
+                  class="cell--img" />
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td colspan="2" class="gallery--cell">
+                <span class="cell--text center">Kid's Collection</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_kid.jpg"
+                  alt="gallery_kid"
+                  class="cell--img" />
+              </td>
+              <td colspan="3" class="gallery--cell">
+                <span class="cell--text center">Vintage Watches</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_vintage.jpg"
+                  alt="gallery_vintage"
+                  class="cell--img" />
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+              <td colspan="3" class="gallery--cell">
+                <span class="cell--text center">Minimalist Watches</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_minimalist.jpg"
+                  alt="gallery_minimalist"
+                  class="cell--img" />
+              </td>
+              <td colspan="5" class="gallery--cell">
+                <span class="cell--text center">Dress Watches</span>
+                <div class="cell--top_layer"></div>
+                <img
+                  src="./images/products/gallery/gallery_dress.jpg"
+                  alt="gallery_dress"
+                  class="cell--img" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <section id="awards_section" class="center">
+        <h2 class="main--headings" style="color: var(--lightest-blue); margin: 0">
+          Our Achievements
+        </h2>
+        <div id="award--img_wrapper" class="center">
+          <img
+            src="./images/achievements/award-1998.png"
+            alt="1998 award"
+            class="award--img" />
+          <img
+            src="./images/achievements/award-2000.png"
+            alt="2000 award"
+            class="award--img" />
+          <img
+            src="./images/achievements/award-2008.png"
+            alt="2008 award"
+            class="award--img" />
+          <img
+            src="./images/achievements/award-2015.png"
+            alt="2015 award"
+            class="award--img" />
+          <img
+            src="./images/achievements/award-2023.png"
+            alt="2023 award"
+            class="award--img" />
+        </div>
+        <div id="award--name_wrapper">
+          <span class="award--name">"Pioneering Engineering in Timekeeping" - 1998</span>
+          <span class="award--name">"Distinguished Legacy in Craftsmanship" - 2000</span>
+          <span class="award--name">"Mastery in Precision" - 2008</span>
+          <span class="award--name">"Excellence in Watch Design" - 2015</span>
+          <span class="award--name">"Innovation in Watchmaking" - 2023</span>
+        </div>
+      </section>
+      <section id="quote--section" class="center">
+        <div id="quote--content">
+          <h1 id="quote--text">"The value of time lies in how it’s lived."</h1>
+          <!-- <span id="quote--author">- CHRONOVA</span> -->
+        </div>
+      </section>
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h3 id="company--name">CHRONOVA</h3>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h3 class="footer--headings">Quick Links</h3>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h3 class="footer--headings">Experience in Person?</h3>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+  <script>
+    // FOR HERO SECTION & HERO INDEX ANIMATIONS
+
+    const item = document.querySelectorAll(".hero--item_index");
+
+    //querySelctorAll to get all elements with same class, in something called a nodelist
+    const sliderItem = document.querySelectorAll(".hero--content_wrapper");
+    const itemHighlight = document.querySelectorAll(".hero--item_index span");
+    let currentIndex = 0; //setting initial index
+
+    // function that runs when the page is first loaded
+    function initialSlidingAnimation() {
+      //adding animation utility classes to the items
+      sliderItem[currentIndex].children[0].classList.add("active_hero--translate");
+      sliderItem[currentIndex].children[0].classList.add("active_hero--opacity");
+      sliderItem[currentIndex].children[1].classList.add("active_hero--translate");
+      sliderItem[currentIndex].children[1].classList.add("active_hero--opacity");
+      itemHighlight[currentIndex].classList.add("active_index");
+
+      setTimeout(() => {
+        sliderItem[currentIndex].children[0].classList.remove("active_hero--opacity");
+        sliderItem[currentIndex].children[1].classList.remove("active_hero--opacity");
+      }, 6300); // to make the elements transparent, a little before they fade out
+
+      //executing fadeInOut function after 6 seconds, initially
+      setTimeout(fadeInOut, 7000);
+    }
+
+    function fadeInOut() {
+      //selecting current elements who are to be animated using currentIndex
+      const currentText = sliderItem[currentIndex].children[0];
+      const currentImg = sliderItem[currentIndex].children[1];
+      const currentItemIndex = itemHighlight[currentIndex];
+
+      /* selecting next elements who are to be animated using {(currentIndex+1) % (length of class ndoelist)}
+      so that the current index loops back to 0 after it reaches the last index of the class elements stored in the nodelist */
+      const nextIndex = (currentIndex + 1) % sliderItem.length;
+      const nextText = sliderItem[nextIndex].children[0];
+      const nextImg = sliderItem[nextIndex].children[1];
+      const nextItemIndex = itemHighlight[nextIndex];
+
+      //removing fade-in/active utility classes from currentIndex elemetns, and adding fade-out utility class to these elements
+      currentText.classList.remove("active_hero--translate");
+      currentImg.classList.remove("active_hero--translate");
+      currentItemIndex.classList.remove("active_index");
+
+      //removing any fade-out utility class from the nextIndex elements and adding fade-in/active utility classes to these elements
+      nextText.classList.add("active_hero--translate");
+      nextText.classList.add("active_hero--opacity");
+      nextImg.classList.add("active_hero--translate");
+      nextImg.classList.add("active_hero--opacity");
+      nextItemIndex.classList.add("active_index");
+
+      setTimeout(() => {
+        nextText.classList.remove("active_hero--opacity");
+        nextImg.classList.remove("active_hero--opacity");
+      }, 6300); // to make the elements transparent, a little before they fade out
+
+      //updating the currentIndex by 1
+      currentIndex = nextIndex;
+
+      //re-executing this function after a delay of 7 seconds
+      setTimeout(fadeInOut, 7000);
+    }
+    initialSlidingAnimation(); //executing the initial function
+
+    //FOR GALLERY HOVER FUNCTIONALITY
+
+    //selecting all the top layer divs of each gallery cell, in something called a nodelist, using querySelectorAll
+    const topLayerDivs = document.querySelectorAll(".cell--top_layer");
+
+    topLayerDivs.forEach((div) => {
+      //determining the parent cell of each div using the closest() method
+      const parentCell = div.closest(".gallery--cell"); //getting the parent cell of each top layer div
+      const currentCellImage = parentCell.querySelector(".cell--img");
+      const currentCellText = parentCell.querySelector(".cell--text");
+
+      //adding hover-active utility class to cell elements on mouse entering a cell
+      div.addEventListener("mouseenter", () => {
+        parentCell.classList.add("hover-active");
+        currentCellImage.classList.add("hover-active");
+        currentCellText.classList.add("hover-active");
+      });
+
+      //removing hover-active utility class to cell elements on mouse leaving a cell
+      div.addEventListener("mouseleave", () => {
+        parentCell.classList.remove("hover-active"); // removing the hover-active utility class to parent cell
+        currentCellImage.classList.remove("hover-active"); // removing the hover-active utility class to cell image
+        currentCellText.classList.remove("hover-active"); // removing the hover-active utility class to cell image
+      });
+    });
+
+    //FOR AWARD SECTION FUNCTIONALITY
+
+    const awardImages = document.querySelectorAll(".award--img");
+    const awardNames = document.querySelectorAll(".award--name");
+
+    awardImages.forEach((img, index) => {
+      //when mouse enters an image, the corresponding text will be visible
+      img.addEventListener("mouseenter", () => {
+        awardNames[index].style.opacity = "1";
+      });
+      //when mouse leaves the image, the corresponding text will be invisible again
+      img.addEventListener("mouseleave", () => {
+        awardNames[index].style.opacity = "0";
+      });
+    });
+  </script>
+</html>

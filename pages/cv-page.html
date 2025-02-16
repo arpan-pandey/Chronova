@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey L1C10T5" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="A page containing the CVs of all team members behind Chronova, our e-commerce watch business." />
+    <!-- website/webpage description -->
+
+    <meta
+      name="keywords"
+      content="chronova creator cv, about page cv, luxury watch creators, chronova team" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="../images/tab--icon.ico" />
+
+    <script defer src="../js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+      }
+
+      main {
+        position: relative;
+        flex-direction: column;
+        background: linear-gradient(
+          to bottom,
+          var(--darkest-blue) 20%,
+          var(--dark-blue),
+          var(--darkest-blue) 80%
+        ); /* simple gradient */
+        padding: 70px 0 128px 0;
+        font-family: "Arial", serif;
+        letter-spacing: 1px;
+        color: var(--darkest-blue);
+      }
+
+      #buttons_wrapper {
+        position: sticky;
+        top: 14px;
+        display: flex;
+        width: 80%;
+        margin: 48px 0;
+        z-index: 5;
+        background-color: var(--darkest-blue);
+      }
+
+      #buttons_wrapper a {
+        all: unset;
+        /* since everything is set to unset, the center utility class wont work. (css loads  after html so everything from center utility class son't be applied) */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        color: var(--lightest-blue);
+        font-family: "Lora", serif;
+        padding: 20px;
+        border: 1px solid var(--medium-blue);
+        user-select: none;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      /* styling the div created by javascript */
+      .button--before {
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        background-color: var(--medium-blue);
+        top: 0;
+        left: 0;
+        transition: left 0.4s ease-in-out;
+        z-index: 1;
+      }
+
+      .cv_wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 65%;
+        margin: 48px 0;
+        padding: 24px;
+        padding-bottom: 72px;
+        background-color: var(--lightest-blue);
+        display: none; /*all are set to none initially, so that only one appears when js is used*/
+      }
+
+      h1 {
+        margin: 24px 0;
+        font-weight: 100;
+        letter-spacing: 12px;
+      }
+
+      h2 {
+        font-weight: 500;
+        font-size: 28px;
+        letter-spacing: 3px;
+      }
+
+      h3 {
+        font-weight: 100;
+        font-size: 20px;
+      }
+
+      p {
+        line-height: 22px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: unset;
+      }
+
+      .cv_header {
+        line-height: 250%;
+        margin-bottom: 64px;
+        text-align: right;
+        border-bottom: 2px solid black;
+        font-size: 38px;
+      }
+
+      aside {
+        width: 27%;
+        padding: 40px;
+        border-right: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .contacts--section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 10px;
+      }
+
+      .contact--content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .contact--content > img {
+        aspect-ratio: 1;
+        height: 24px;
+        filter: brightness(30%);
+      }
+
+      .contact--content span {
+        font-weight: 500;
+      }
+
+      .education--content span {
+        line-height: 20px;
+      }
+
+      .skills--section {
+        width: 80%;
+        justify-self: flex-end;
+        margin-top: 70px;
+        padding: 20px 0;
+        border: 2px solid;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+
+      .skills--section ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        letter-spacing: 2px;
+      }
+
+      .main {
+        display: flex;
+      }
+
+      .main--content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 0px 55px;
+        gap: 60px;
+      }
+
+      .work--achievements_section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .work--achievements_section ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .work--achievements_section ul li h3 {
+        margin: 10px 0;
+      }
+
+      .work--achievements_section ul li span {
+        font-size: 14px;
+        color: var(--medium-blue);
+        opacity: 0.9;
+      }
+
+      .work--achievements_section ul li p {
+        margin: 10px 0;
+        font-size: 15px;
+      }
+
+      .download--buttons {
+        border: 1px solid var(--medium-blue);
+        display: none;
+      }
+    </style>
+
+    <title>Chronova | CVs</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="header--nav">
+        <div id="company--logo_wrapper">
+          <a href="../index.html" target="_self" id="company--logo">
+            <img src="../images/company--logo.png" alt="company_logo" id="logo--image" />
+            <span>Chronova</span>
+          </a>
+        </div>
+        <div id="nav--link_wrapper" class="center">
+          <ul>
+            <a href="../index.html" class="nav--link">
+              <li>HOME</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./product-page.html" class="nav--link">
+              <li>PRODUCTS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./blog-page.html" class="nav--link">
+              <li>BLOG</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./about-page.html" class="nav--link">
+              <li>ABOUT US</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./review-page.html" class="nav--link">
+              <li>TESTIMONIALS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./research-page.html" class="nav--link">
+              <li>RESEARCH</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="center">
+      <h1 class="main--headings" style="color: var(--lightest-blue)">CVs</h1>
+
+      <div id="buttons_wrapper">
+        <!-- setting link to # because there is no hyperlink to reference to -->
+        <a href="#">Arpan</a>
+        <a href="#">Lorem</a>
+        <a href="#">Ipsum</a>
+        <a href="#">Dolor</a>
+        <a href="#">Sit</a>
+      </div>
+
+      <div class="cv_wrapper" id="cv_arpan">
+        <section class="cv_header">
+          <h1>ARPAN<br />PANDEY</h1>
+        </section>
+        <section class="main">
+          <aside>
+            <div class="contacts--section">
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-phone.png" />
+                <!-- reuse of footer icons, with different styling -->
+                <span>+977 9864614750</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-mail.png" />
+                <!-- reuse of footer icons, with different styling -->
+                <span>p.arpanpandey@gmail.com</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-address.png" />
+                <!-- reuse of footer icons, with different styling -->
+                <span>Banasthali, Kathmandu</span>
+              </div>
+            </div>
+
+            <div class="education--section">
+              <h2>EDUCATION</h2>
+              <div class="education--content">
+                <h3>SCHOOL</h3>
+                <span>Brihaspati Vidhyasadan<br />Naxal, Kathmandu</span>
+              </div>
+              <br />
+              <div class="education--content">
+                <h3>HIGH SCHOOL, +2</h3>
+                <span>Xavier Academy<br />Lazimpat, Kathmandu</span>
+              </div>
+              <br />
+              <div class="education--content">
+                <h3>
+                  UNIVERSITY
+                  <span style="font-size: 12px; color: var(--dark-blue)">(Pursuing)</span>
+                </h3>
+                <span>Islington College<br />Putalisadak, Kathmandu</span>
+              </div>
+            </div>
+            <div class="skills--section">
+              <h2>SKILLS</h2>
+              <ul>
+                <li>HTML, CSS, JS</li>
+                <li>Java</li>
+                <li>Leadership</li>
+                <li>Teamwork</li>
+                <li>Problem Solving</li>
+                <li>Communication</li>
+                <li>Designing</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="main--content">
+            <div class="profile--section">
+              <h2>PROFILE</h2>
+              <p>
+                An undergraduate student at Islington College with a passion for music,
+                programming, and playing the piano. Highly motivated and eager to learn
+                new skills, with a keen interest in leveraging technology for creative and
+                innovative solutions. Enthusiastic about collaborating on challenging
+                projects to develop expertise and contribute meaningfully to the tech
+                industry.
+              </p>
+            </div>
+            <div class="work--achievements_section">
+              <h2>WORK & ACHIEVEMENTS</h2>
+              <ul>
+                <li>
+                  <h3>LOGISTICS FOR XAMUN2024</h3>
+                  <span>XAMUN2024 | 16-18 August, 2024</span>
+                  <p>
+                    Worked as a logistics member for last year’s iteration of the Xavier
+                    Academy Model United Nations held at Club Himalaya Nagarkot, managing
+                    delegates and ensuring the proper flow of committee meetings.
+                  </p>
+                </li>
+                <li>
+                  <h3>BEST DELGATE OF SOCHUM, TIMUN24</h3>
+                  <span>Trinity International College | 13-15 January, 2024</span>
+                  <p>
+                    Was honored as the best delegate of the SOCHUM committee in last
+                    year’s Trinity International Model United Nations.
+                  </p>
+                </li>
+                <li>
+                  <h3>L.A MATH OLYMPIAD FINALIST</h3>
+                  <span>Little Angel’s College | December 4. 2024</span>
+                  <p>
+                    Reached the finals of the Little Angel’s Math Olympiad Competition,
+                    outperforming more than 40+ teams in the process.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="cv_wrapper">
+        <section class="cv_header">
+          <h1>LOREM<br />IPSUM</h1>
+        </section>
+        <section class="main">
+          <aside>
+            <div class="contacts--section">
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-phone.png" />
+                <span>+977 123456789</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-mail.png" />
+                <span>lorem@ipsum.com</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-address.png" />
+                <span>Lorem Ipsum, Kathmandu</span>
+              </div>
+            </div>
+
+            <div class="education--section">
+              <h2>EDUCATION</h2>
+              <div class="education--content">
+                <h3>SCHOOL</h3>
+                <span>Lorem Ipsum High School</span>
+              </div>
+              <div class="education--content">
+                <h3>HIGH SCHOOL, +2</h3>
+                <span>Dolor Sit Amet College</span>
+              </div>
+            </div>
+            <div class="skills--section">
+              <h2>SKILLS</h2>
+              <ul>
+                <li>Lorem Ipsum</li>
+                <li>Dolor Sit Amet</li>
+                <li>Consectetur Adipiscing</li>
+                <li>Elit Sed Do</li>
+                <li>Eiusmod Tempor</li>
+                <li>Incididunt Ut Labore</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="main--content">
+            <div class="profile--section">
+              <h2>PROFILE</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.
+              </p>
+            </div>
+            <div class="work--achievements_section">
+              <h2>WORK & ACHIEVEMENTS</h2>
+              <ul>
+                <li>
+                  <h3>RECEPTIONIST</h3>
+                  <span>Lorem Ipsum Room | 24 Lorem - 12 Ipsum</span>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                </li>
+                <li>
+                  <h3>INTERN</h3>
+                  <span>Dolor Sit Academy | 13 Amet</span>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                  <ul style="list-style-type: circle; padding-left: 48px">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li>
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </li>
+                    <li>
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="cv_wrapper">
+        <section class="cv_header">
+          <h1>DOLOR<br />SIT AMET</h1>
+        </section>
+        <section class="main">
+          <aside>
+            <div class="contacts--section">
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-phone.png" />
+                <span>+977 987654321</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-mail.png" />
+                <span>dolor@sitamet.com</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-address.png" />
+                <span>Consectetur Adipiscing, Kathmandu</span>
+              </div>
+            </div>
+
+            <div class="education--section">
+              <h2>EDUCATION</h2>
+              <div class="education--content">
+                <h3>SCHOOL</h3>
+                <span>Elit Sed Do School</span>
+              </div>
+              <div class="education--content">
+                <h3>HIGH SCHOOL, +2</h3>
+                <span>Eiusmod Tempor College</span>
+              </div>
+            </div>
+            <div class="skills--section">
+              <h2>SKILLS</h2>
+              <ul>
+                <li>Lorem Ipsum</li>
+                <li>Dolor Sit Amet</li>
+                <li>Consectetur Adipiscing</li>
+                <li>Elit Sed Do</li>
+                <li>Eiusmod Tempor</li>
+                <li>Incididunt Ut Labore</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="main--content">
+            <div class="profile--section">
+              <h2>PROFILE</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.
+              </p>
+            </div>
+            <div class="work--achievements_section">
+              <h2>WORK & ACHIEVEMENTS</h2>
+              <ul>
+                <li>
+                  <h3>SPORTS</h3>
+                  <ul style="list-style-type: circle; padding-left: 48px">
+                    <li>1st Place in Lorem (two events)</li>
+                    <li>1st Place in Ipsum</li>
+                    <li>3rd Place in Dolor</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3>SPORTS</h3>
+                  <ul style="list-style-type: circle; padding-left: 48px">
+                    <li>1st Place in Lorem Ipsum Dolor Sit (Amet College)</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3>EXTRAS</h3>
+                  <ul style="list-style-type: circle; padding-left: 48px">
+                    <li>Participant, Dolor 2023/24</li>
+                    <li>Volunteer, Multiple Lorem Services</li>
+                    <li>Participant, Ipsum Week</li>
+                    <li>Participant, Lorem Ipsum Workshop – Amet College</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="cv_wrapper">
+        <section class="cv_header">
+          <h1>CONSECTETUR<br />ADIPISCING</h1>
+        </section>
+        <section class="main">
+          <aside>
+            <div class="contacts--section">
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-phone.png" />
+                <span>+977 123123123</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-mail.png" />
+                <span>consectetur@adipiscing.com</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-address.png" />
+                <span>Elit Sed Do, Kathmandu</span>
+              </div>
+            </div>
+
+            <div class="education--section">
+              <h2>EDUCATION</h2>
+              <div class="education--content">
+                <h3>SCHOOL</h3>
+                <span>Eiusmod Tempor School</span>
+              </div>
+              <div class="education--content">
+                <h3>HIGH SCHOOL, +2</h3>
+                <span>Incididunt Ut Labore College</span>
+              </div>
+            </div>
+            <div class="skills--section">
+              <h2>SKILLS</h2>
+              <ul>
+                <li>Lorem Ipsum</li>
+                <li>Dolor Sit Amet</li>
+                <li>Consectetur Adipiscing</li>
+                <li>Elit Sed Do</li>
+                <li>Eiusmod Tempor</li>
+                <li>Incididunt Ut Labore</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="main--content">
+            <div class="profile--section">
+              <h2>PROFILE</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.
+              </p>
+            </div>
+            <div class="work--achievements_section">
+              <h2>WORK & ACHIEVEMENTS</h2>
+              <ul>
+                <li>
+                  <h3>LOREM IPSUM TREKS</h3>
+                  <span>11 Dolor, 2024</span>
+                </li>
+                <ul style="list-style-type: circle; padding-left: 48px">
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                  <li>
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </li>
+                  <li>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                  </li>
+                  <li>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore.
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="cv_wrapper">
+        <section class="cv_header">
+          <h1>ELIT<br />SED DO</h1>
+        </section>
+        <section class="main">
+          <aside>
+            <div class="contacts--section">
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-phone.png" />
+                <span>+977 456456456</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-mail.png" />
+                <span>elit@seddo.com</span>
+              </div>
+              <div class="contact--content">
+                <img src="../images/footerIcons/footer-address.png" />
+                <span>Eiusmod Tempor, Kathmandu</span>
+              </div>
+            </div>
+
+            <div class="education--section">
+              <h2>EDUCATION</h2>
+              <div class="education--content">
+                <h3>SCHOOL</h3>
+                <span>Incididunt Ut Labore School</span>
+              </div>
+              <div class="education--content">
+                <h3>HIGH SCHOOL, +2</h3>
+                <span>Lorem Ipsum College</span>
+              </div>
+            </div>
+            <div class="skills--section">
+              <h2>SKILLS</h2>
+              <ul>
+                <li>Lorem Ipsum</li>
+                <li>Dolor Sit Amet</li>
+                <li>Consectetur Adipiscing</li>
+                <li>Elit Sed Do</li>
+                <li>Eiusmod Tempor</li>
+                <li>Incididunt Ut Labore</li>
+              </ul>
+            </div>
+          </aside>
+          <div class="main--content">
+            <div class="profile--section">
+              <h2>PROFILE</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.
+              </p>
+            </div>
+            <div class="work--achievements_section">
+              <h2>WORK & ACHIEVEMENTS</h2>
+              <ul>
+                <li>
+                  <h3>TEACHER</h3>
+                  <span>Lorem Ipsum Memorial School | 29 Lorem,2023</span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <br />
+                  <span>Dolor Amet School | 14 Sed,2024</span>
+                  <p>
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+                  <br />
+                  <span>The Lorem School | 28 Sit,2024</span>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                  </p>
+                </li>
+                <li>
+                  <h3>INTERN</h3>
+                  <span>Lorem Academy | 8 Ipsum,2024 - 24 Dolor,2025</span>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </p>
+
+                  <ul style="list-style-type: circle; padding-left: 48px">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li>
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </li>
+                    <li>
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <a
+        href="../assets/arpan_cv.pdf"
+        id="download--arpan_cv"
+        class="main--section_buttons download--buttons"
+        download>
+        Download this CV
+      </a>
+
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h1 id="company--name">CHRONOVA</h1>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h1 class="footer--headings">Quick Links</h1>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h1 class="footer--headings">Experience in Person?</h1>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+  <script>
+    //selecting all the required elements
+    const buttonsWrapper = document.querySelector("#buttons_wrapper");
+    const buttons = document.querySelectorAll("#buttons_wrapper a");
+    const beforeElement = document.createElement("div"); //creating a new div
+    const cv = document.querySelectorAll(".cv_wrapper");
+    const cvDownloadButtons = document.querySelectorAll(".download--buttons");
+    let defaultPos;
+    var lastIndex;
+
+    beforeElement.classList.add("button--before"); //adding a class to the previously created div, so that styling can be done using css
+    buttonsWrapper.appendChild(beforeElement); //appending this newly created div to the button wrapper
+
+    //function that runs when the window is first loaded
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      //new URLSearchParams(window.location.search) creates an object of a built in JS API which lets one pass parameters from a hyperlink
+
+      // setting defaultPos to be either parameter value or 0 (default value, incase the cv-page.html file is opened directly without any link containing a parameter)
+      defaultPos = urlParams.has("CVNumber") ? urlParams.get("CVNumber") : 0;
+
+      //setting the required parameter's cv & it's button to be visible
+      cv[defaultPos].style.display = "block";
+
+      // since there are no other CVs except the first one
+      if (defaultPos == 0) {
+        cvDownloadButtons[defaultPos].style.display = "block";
+      }
+
+      moveBeforeElement(defaultPos);
+      lastIndex = defaultPos;
+    };
+
+    function moveBeforeElement(index) {
+      //function that calculates and positions the before element using the left value of the element so that it highlights each button perfectly
+      beforeElement.style.left = `${index * 20}%`;
+    }
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); // to prevent page reloading everytime a button is clicked
+
+        moveBeforeElement(index);
+
+        cv[lastIndex].style.display = "none";
+        cv[index].style.display = "block";
+
+        if (defaultPos != 0) {
+          cvDownloadButtons[0].style.display = "block"; // removing cv download button if currently viewing cv isn't first one
+        } else {
+          cvDownloadButtons[defaultPos].style.display = "block"; // showing cv download button if currently viewing cv is the first one
+        }
+
+        lastIndex = index; // updating last index for future use
+      });
+    });
+  </script>
+</html>

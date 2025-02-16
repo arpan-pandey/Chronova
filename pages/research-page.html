@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="Research for our e-commerce watch business Chronova's website." />
+    <!-- website/webpage description -->
+
+    <meta
+      name="keywords"
+      content="watch page research, chronova research, tools used for chronova watches, AI to create watches" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- external css for styling -->
+
+    <link rel="icon" href="../images/tab--icon.ico" />
+    <!-- linking image for browser tab icon -->
+
+    <script defer src="../js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      main {
+        flex-direction: column;
+        padding: 50px 0;
+      }
+
+      #research--cards_section {
+        height: 100%;
+        width: 80%;
+        flex-direction: column;
+      }
+
+      #research--cards_wrapper {
+        margin-top: 32px;
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 60px;
+        justify-content: center;
+      }
+
+      .research--card {
+        width: 43%;
+        height: 380px;
+        border: 1px solid var(--darkest-blue);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: scale 0.3s ease-in-out;
+      }
+
+      .research--card:hover {
+        scale: 1.01;
+      }
+
+      .research--card > a {
+        height: 70%;
+        border-bottom: 2px solid var(--light-blue);
+      }
+
+      .research--card figure {
+        margin: unset;
+        background: linear-gradient(
+          to right,
+          var(--lighter-blue),
+          var(--lightest-blue),
+          var(--lighter-blue)
+        ); /* placeholder background with no value */
+        height: 100%;
+      }
+
+      /*  
+        changning individual card backgrounds
+        center/cover is added because the background shorthand property expects value like:
+              background: [image] [position]/[size] [repeat] [origin] [clip] [attachment];
+              ==============  
+              the center/cover follows the [position]/[size] rule
+      */
+      .research--card:nth-of-type(1) figure {
+        background: url(../images/research/homepage/home-landing.png) center/cover;
+      }
+      .research--card:nth-of-type(2) figure {
+        background: url(../images/research/page_skeleton.jpg) center/cover;
+      }
+      .research--card:nth-of-type(3) figure {
+        background: url(../images/research/page_skeleton.jpg) center/cover;
+      }
+      .research--card:nth-of-type(4) figure {
+        background: url(../images/research/about/about-landing.png) center/cover;
+      }
+      .research--card:nth-of-type(5) figure {
+        background: url(../images/research/page_skeleton.jpg) center/cover;
+      }
+
+      .card--text {
+        flex: 1;
+        width: 100%;
+        padding: 22px;
+        background: linear-gradient(45deg, var(--darkest-blue) 20%, var(--darker-blue));
+        color: var(--lightest-blue);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .card--text h3 {
+        margin: unset;
+        font-family: "Cormorant", serif;
+        font-weight: 400;
+        font-size: 22px;
+      }
+
+      .card--text p {
+        margin: unset;
+      }
+
+      .card--text p a {
+        all: unset;
+        cursor: pointer;
+        color: var(--light-blue);
+        font-family: "Lora", serif;
+        font-size: 14px;
+        text-decoration: underline;
+      }
+
+      #timeline_section {
+        position: relative;
+        height: 1200px;
+        width: 80%;
+        flex-direction: column;
+      }
+
+      #timeline {
+        position: absolute;
+        align-self: flex-end;
+        left: 50%;
+        height: 75%;
+        width: 2px;
+        background-color: var(--darker-blue);
+        border-radius: 100px;
+        transform: translateX(-50%);
+      }
+
+      #timeline:before,
+      #timeline:after {
+        position: absolute;
+        content: "";
+        height: 2.5px;
+        width: 10px;
+        border-radius: 100px;
+        background-color: var(--darker-blue);
+        transform: translateX(calc(-50% + 1px));
+      }
+
+      #timeline:after {
+        bottom: 0;
+      }
+
+      .timeline--symbol {
+        position: absolute;
+        height: 14px;
+        aspect-ratio: 1;
+        background-color: var(--lighter-blue);
+        border: 3px solid var(--darker-blue);
+        border-radius: 100%;
+        transform: translate(calc(-50% + 1px), -50%);
+      }
+
+      .timeline--symbol:nth-of-type(1) {
+        top: 20%;
+      }
+      .timeline--symbol:nth-of-type(2) {
+        top: 40%;
+      }
+      .timeline--symbol:nth-of-type(3) {
+        top: 60%;
+      }
+      .timeline--symbol:nth-of-type(4) {
+        top: 80%;
+      }
+
+      .timeline--symbol:before {
+        position: absolute;
+        content: "";
+        border: 7px solid transparent; /* for creating a triangle */
+        border-top-color: var(--darker-blue); /* for creating a triangle */
+        rotate: 90deg;
+        transform: translate(
+          6%,
+          99.5%
+        ); /* to perfectly align the arrow to the left of the symbol*/
+      }
+
+      .timeline--symbol:nth-of-type(even)::before {
+        rotate: 270deg;
+        transform: translate(
+          -6%,
+          112%
+        ); /* to perfectly align the arrow to the right of the symbol*/
+      }
+
+      #timeline--content {
+        position: relative;
+        align-self: flex-end;
+        height: 87%;
+        width: 100%;
+      }
+
+      .timeline--box {
+        position: absolute;
+        height: 9%;
+        width: 30%;
+        padding: 48px;
+        transform: translateY(-59%);
+        color: var(--lighter-blue);
+        background-color: var(--darker-blue);
+        border-bottom: 10px solid var(--dark-blue);
+        background: linear-gradient(45deg, var(--darkest-blue) 20%, var(--darker-blue));
+        box-shadow: 1px 1px 5px var(--darkest-blue);
+        border-radius: 13px;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+        cursor: default;
+      }
+
+      .timeline--box:hover {
+        scale: 1.05;
+      }
+
+      .timeline--box:before {
+        position: absolute;
+        content: "";
+        opacity: 0.7;
+        width: 10px;
+        height: 200%;
+        top: 0%;
+        left: -50%;
+        transform: rotate(-45deg) scale(2);
+        background: linear-gradient(
+          to right,
+          var(--lighter-blue),
+          var(--lightest-blue),
+          var(--lighter-blue)
+        );
+        filter: blur(22px);
+      }
+
+      .timeline--box:hover::before {
+        transition: all 0.6s ease-in-out; /* transition is added to hover so that there is no reverse animation for the before element */
+        top: 0%;
+        left: 200%;
+      }
+
+      /* to put all odd timeline boxes to the left */
+      .timeline--box:nth-of-type(odd) {
+        left: 7%;
+      }
+
+      /* to put all even timeline boxes to the left */
+      .timeline--box:nth-of-type(even) {
+        right: 7%;
+      }
+
+      /* setting positions of all 4 timeline boxes */
+      .timeline--box:nth-of-type(1) {
+        top: 20%;
+      }
+      .timeline--box:nth-of-type(2) {
+        top: 37.5%;
+      }
+      .timeline--box:nth-of-type(3) {
+        top: 54.5%;
+      }
+      .timeline--box:nth-of-type(4) {
+        top: 72%;
+      }
+
+      .timeline--box h2 {
+        margin: unset; /* to remove default margin */
+        margin-bottom: 12px;
+        font-family: "Cormorant", serif;
+        font-weight: 400;
+        font-size: 32px;
+      }
+
+      .timeline--box p {
+        font-family: "Lora", serif;
+        font-size: 16px;
+      }
+
+      .timeline--box p a {
+        color: var(
+          --lightest-blue
+        ); /* to make the link slightly brighter than the text */
+      }
+    </style>
+
+    <title>Chronova | Research</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="header--nav">
+        <div id="company--logo_wrapper">
+          <a href="../index.html" target="_self" id="company--logo">
+            <img src="../images/company--logo.png" alt="company_logo" id="logo--image" />
+            <span>Chronova</span>
+          </a>
+        </div>
+        <div id="nav--link_wrapper" class="center">
+          <ul>
+            <a href="../index.html" class="nav--link">
+              <li>HOME</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./product-page.html" class="nav--link">
+              <li>PRODUCTS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./blog-page.html" class="nav--link">
+              <li>BLOG</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./about-page.html" class="nav--link">
+              <li>ABOUT US</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./review-page.html" class="nav--link">
+              <li>TESTIMONIALS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./research-page.html" class="nav--link active">
+              <li>RESEARCH</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="center">
+      <section id="research--cards_section" class="center">
+        <h1 class="main--headings">Our Research</h1>
+        <div id="research--cards_wrapper">
+          <div class="research--card">
+            <a href="./comparison-page.html?comparisonIndex=0"><figure></figure></a>
+            <div class="card--text center">
+              <h3>Homepage research</h3>
+              <p>
+                <a href="./comparison-page.html?comparisonIndex=0"> View Details → </a>
+              </p>
+            </div>
+          </div>
+          <div class="research--card">
+            <a href="./comparison-page.html?comparisonIndex=1"><figure></figure></a>
+            <div class="card--text center">
+              <h3>Products Page Research</h3>
+              <p>
+                <a href="./comparison-page.html?comparisonIndex=1"> View Details → </a>
+              </p>
+            </div>
+          </div>
+          <div class="research--card">
+            <a href="./comparison-page.html?comparisonIndex=2"><figure></figure></a>
+            <div class="card--text center">
+              <h3>Blog Research</h3>
+              <p>
+                <a href="./comparison-page.html?comparisonIndex=2"> View Details → </a>
+              </p>
+            </div>
+          </div>
+          <div class="research--card">
+            <a href="./comparison-page.html?comparisonIndex=3"><figure></figure></a>
+            <div class="card--text center">
+              <h3>About Page Research</h3>
+              <p>
+                <a href="./comparison-page.html?comparisonIndex=3"> View Details → </a>
+              </p>
+            </div>
+          </div>
+          <div class="research--card">
+            <a href="./comparison-page.html?comparisonIndex=4"><figure></figure></a>
+            <div class="card--text center">
+              <h3>Testimonials Page Research</h3>
+              <p>
+                <a href="./comparison-page.html?comparisonIndex=4"> View Details → </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <section id="timeline_section" class="center">
+        <h2 class="main--headings">How We Brought Our Product Images to Life</h2>
+        <div id="timeline">
+          <div class="timeline--symbol"></div>
+          <div class="timeline--symbol"></div>
+          <div class="timeline--symbol"></div>
+          <div class="timeline--symbol"></div>
+        </div>
+
+        <div id="timeline--content">
+          <div class="timeline--box">
+            <h2>Image creation</h2>
+            <hr style="margin: 0" />
+            <p>
+              <a href="https://bing.com/images/create" target="_blank"
+                >Bing Image Creator</a
+              >
+              was used to create the watches and the logo.
+            </p>
+          </div>
+
+          <div class="timeline--box">
+            <h2>Upscaling</h2>
+            <hr style="margin: 0" />
+            <p>
+              <a href="https://imgupscaler.com" target="_blank">Img.Upscaler</a> was used
+              to upscale the images to a higher resolution.
+            </p>
+          </div>
+
+          <div class="timeline--box">
+            <h2>Background removal</h2>
+            <hr style="margin: 0" />
+            <p>
+              <a href="https://remove.bg" target="_blank">remove.bg</a> was used to remove
+              backgrounds from the images seamlessly.
+            </p>
+          </div>
+
+          <div class="timeline--box">
+            <h2>Color replacement</h2>
+            <hr style="margin: 0" />
+            <p>
+              <a href="https://www3.lunapic.com" target="_blank">LunaPic</a> was used to
+              replace the generated logo's colors with our company branding.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="individual--pages_section"></section>
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h3 id="company--name">CHRONOVA</h3>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h3 class="footer--headings">Quick Links</h3>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h3 class="footer--headings">Experience in Person?</h3>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+</html>

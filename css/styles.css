@@ -1,0 +1,481 @@
+@font-face {
+    font-family: 'Cormorant';
+    src: url('../fonts/Cormorant-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cinzel';
+    src: url('../fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+}
+
+/* 
+Importing font-faces named Cormorant, Lora and Cinzel respectively, each to be used in the following cases:
+    1) Cormorant: Headings/Names and important texts
+    2) Lora: Content texts and in similarly important places
+    3) Cinzel: For the company name and quotes
+*/
+
+:root{
+    /*
+    Using variables to store the website's color scheme. 
+    These are stored in the root element of the document, and in the external css file for global scope.
+    */
+
+    --darkest-blue: #06141b;
+    --darker-blue: #11212d;
+    --dark-blue: #253745;
+    --medium-blue: #4a5c6a;
+    --light-blue: #9ba8ab;
+    --lighter-blue: #ccd0cf;
+    --lightest-blue: #e1e4e3;
+}
+
+body{
+    background-color: var(--lighter-blue);
+    margin: 0; /* to remove unnecessary gaps */
+    overflow-x: hidden; /* to prevent horizontal scrolling */
+}
+
+.center{ 
+    /* utility class to center a contents inside a container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    user-select: none;
+    height: 120px;
+    width: 100%;
+    padding-left: 10%;
+    z-index: 3;
+    background-color: var(--darkest-blue);
+    color: var(--lighter-blue);
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    flex-direction: row;
+    transition: all 0.4s ease-in-out;
+    border-bottom: 1px solid var(--dark-blue);
+    z-index: 1000;
+}   
+
+#header--nav{
+    width: 80%;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+}
+
+#company--logo_wrapper{
+  height: 100%;
+  border-right: 1px solid var(--dark-blue);
+  padding: 0 2% 0 1%;
+  border-left: 1px solid var(--dark-blue);  
+  }
+  
+  #company--logo{
+    all: unset;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    color: var(--lighter-blue);
+    align-items: center;
+    font-family: 'Cinzel', serif;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+#logo--image{
+    height: 100%;
+}
+
+#nav--link_wrapper{
+    flex: 1;
+    border-right: 1px solid var(--dark-blue);
+}
+
+#nav--link_wrapper ul{
+    margin: 0;
+    width: 100%;
+    padding: 0 5%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav--link{
+    all: unset;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 100%;
+    transition: color  0.3s ease-in-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+.nav--link:hover{
+    color: var(--light-blue);
+}
+
+.nav--link::after{
+    position: absolute;
+    content: '';
+    width: 0%;
+    left: 0;
+    height: 0.5px;
+    border-radius: 20px;
+    background-color: var(--lighter-blue); 
+    transition: all 0.3s ease-in-out;
+    align-self: flex-end;
+}
+
+.nav--link:hover:after{
+    width: 100%;
+    background-color: var(--light-blue);
+}
+
+.nav--link.active{
+    color: var(--light-blue);
+}
+.nav--link.active:after{
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  height: 0.5px;
+  border-radius: 20px;
+  background-color: var(--light-blue); 
+  transition: all 0.3s ease-in-out;
+  align-self: flex-end;
+}
+
+.link--seperator{
+    height: 20px;
+    width: 0.5px;
+    background-color: var(--dark-blue);
+}
+
+.main--headings {
+  color: var(--darker-blue);
+  font-family: "Cormorant";
+  font-weight: bolder;
+  font-size: 250%;
+  letter-spacing: 2px;
+}
+.main--section_buttons {
+  all: unset;
+  margin-top: 1%;
+  position: relative;
+  cursor: pointer;
+  padding: 18px;
+  background-color: var(--darker-blue);
+  font-family: "Lora", serif;
+  color: var(--lighter-blue);
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.main--section_buttons:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 0%;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  background-color: var(--lightest-blue);
+  transition: all 0.2s ease-in-out;
+}
+
+.main--section_buttons:hover {
+  color: var(--darker-blue);
+}
+.main--section_buttons:hover::after {
+  width: 100%;
+  border: 1px solid var(--darkest-blue);
+}
+
+hr {
+  width: 80%;
+  border: 1px solid var(--light-blue);
+  border-radius: 30%;
+  margin-top: 63px;
+  margin-bottom: 33px;
+}
+
+footer {
+    height: 390px;
+    width: 100%;
+    background-color: var(--darker-blue);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #company--icon_stamp {
+    width: 100%;
+    height: 65px;
+    /*the next two are added as there is no use for dragging or seleecting the image*/
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  #company--icon_stamp img {
+    height: 110px;
+    aspect-ratio: 1;
+    padding: 8px;
+    border-radius: 100%;
+    background-color: var(--darker-blue);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #footer--content_section {
+    margin-top: 16px;
+    flex: 1;
+    width: 100%;
+  }
+
+  #footer--content {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #company--detail_wrapper {
+    width: 45%;
+    height: 100%;
+    color: var(--lighter-blue);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #company--name {
+    all: unset;
+    font-family: "Cinzel", serif;
+    font-size: 200%;
+    position: relative;
+    max-width: fit-content;
+  }
+  
+  #company--name:after {
+    height: 0.5px;
+    width: 100%;
+    background-color: var(--lighter-blue);
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+  }
+
+  #company--detail_wrapper p {
+    all: unset;
+    width: 75%;
+    color: var(--light-blue);
+    font-style: italic;
+    opacity: 0.4;
+    font-family: "Lora", serif;
+    font-size: 105%;
+  }
+
+  #company--contacts {
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contacts {
+    user-select: none;
+    width: fit-content;
+    gap: 10px;
+  }
+
+  .contacts img {
+    height: 20px;
+    aspect-ratio: 1;
+    user-select: none;
+  }
+
+  .contacts--text {
+    all: unset;
+    font-size: 80%;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Lora", serif;
+    letter-spacing: 2px;
+
+  }
+  .contacts--text:hover {
+    text-decoration: underline;
+  }
+
+  #footer-nav {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #quick--links {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer--headings {
+    all: unset;
+    font-family: "Cormorant", serif;
+    font-size: 160%;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--lightest-blue);
+  }
+
+  #quick--links ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .page--links {
+    all: unset;
+    width: max-content;
+  }
+
+  .page--links li {
+    padding-right: 24px;
+    cursor: pointer;
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    font-size: 80%;
+    color: var(--lighter-blue);
+    transition: color 0.1s ease-in-out;
+  }
+  .page--links li:hover {
+    color: var(--medium-blue);
+  }
+
+  #appointment--form_wrapper {
+    height: fit-content;
+    width: 65%;
+    color: var(--lighter-blue);
+  }
+
+  #appointment--form_wrapper p {
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    font-size: 80%;
+    margin-top: 32px;
+    width: max-content;
+  }
+
+  form {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
+  }
+
+  #form--input_email {
+    width: 60%;
+    height: 48px;
+    border: none;
+    font-family: "Lora", serif;
+    padding-inline: 5%;
+  }
+  #form--input_email:focus {
+    outline: none; /* to remove the default focus outline */
+  }
+
+  #form--input_submit {
+    all: unset;
+    background-color: var(--medium-blue);
+    width: 12%;
+    color: var(--lightest-blue);
+    font-family: "Cormorant", serif;
+    font-size: 200%;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    user-select: none;
+  }
+  #form--input_submit:hover {
+    background-color: var(--dark-blue);
+  }
+
+  #form--empty_message {
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    font-size: 80%;
+    color: #ff6f61;
+    opacity: 0;
+    user-select: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+  #form--empty_message.empty {
+    opacity: 1;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    margin-top: 14px;
+    padding: 10px 10px 10px 16px;
+    color: var(--darkest-blue);
+    background-color: var(--lighter-blue);
+    border: 1px solid var(--darkest-blue);
+    font-size: 90%;
+    font-family: "Lora", serif;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    transition: all 1s ease-in-out;
+    z-index: 10;
+    transform: translateY(-100%);
+    opacity: 0;
+    user-select: none;
+  }
+  .popup.activate-message {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  .popup button {
+    all: unset;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+  }
+  .popup button:hover {
+    background-color: var(--light-blue);
+  }
+
+  #footer--copyright_section {
+    background-color: var(--darkest-blue);
+    height: 15%; 
+    width: 100%;
+  }
+
+  #footer--copyright_section span {
+    font-size: 90%;
+    color: var(--lighter-blue);
+    font-family: "Cinzel", serif;
+  }
+
+  

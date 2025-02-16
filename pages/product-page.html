@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="An products page that shows all the watches of our e-commerce watch business Chronova." />
+    <!-- website/webpage description -->
+
+    <meta name="keywords" content="watches chronova, chronova products, luxury watch" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="../images/tab--icon.ico" />
+
+    <script defer src="../js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+      }
+
+      main {
+        flex-direction: column;
+      }
+
+      main > span {
+        height: 225px;
+      }
+    </style>
+
+    <title>Chronova | Products</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="header--nav">
+        <div id="company--logo_wrapper">
+          <a href="../index.html" target="_self" id="company--logo">
+            <img src="../images/company--logo.png" alt="company_logo" id="logo--image" />
+            <span>Chronova</span>
+          </a>
+        </div>
+        <div id="nav--link_wrapper" class="center">
+          <ul>
+            <a href="../index.html" class="nav--link">
+              <li>HOME</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./product-page.html" class="nav--link active">
+              <li>PRODUCTS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./blog-page.html" class="nav--link">
+              <li>BLOG</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./about-page.html" class="nav--link">
+              <li>ABOUT US</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./review-page.html" class="nav--link">
+              <li>TESTIMONIALS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./research-page.html" class="nav--link">
+              <li>RESEARCH</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="center">
+      <span class="center">WORK IN PROGRESS! (this page was not my part)</span>
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h3 id="company--name">CHRONOVA</h3>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h3 class="footer--headings">Quick Links</h3>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h3 class="footer--headings">Experience in Person?</h3>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+</html>

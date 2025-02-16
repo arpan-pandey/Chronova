@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="author" content="Arpan Pandey" />
+    <!-- webpage creator -->
+
+    <meta
+      name="description"
+      content="An about page for team members behind our e-commerce watch business Chronova." />
+    <!-- website/webpage description -->
+
+    <meta name="keywords" content="contact chronova, about chronova, feedback form" />
+    <!-- keywords related to the brand, for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- for webpage responsiveness on different devices -->
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="../images/tab--icon.ico" />
+
+    <script defer src="../js/main.js"></script>
+    <!-- defer keyword is used to execute the js file when the page is fully loaded, instead of executing as soon as possible -->
+    <!-- here defer is used instead of async because the main.js script is DOM dependent and works with form/DOM manipulation, instead of dealing with APIs and data importing -->
+
+    <style>
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      main {
+        flex-direction: column;
+        padding: 32px 0 118px 0;
+      }
+
+      #about--landing_section {
+        flex-direction: column;
+        width: 55%;
+      }
+
+      #landing--heading {
+        text-align: justify;
+      }
+
+      #about--landing_section p {
+        font-family: "Lora", serif;
+        color: var(--medium-blue);
+        font-size: 16px;
+        margin-top: unset;
+      }
+
+      #landing--button_wrapper {
+        display: flex;
+        gap: 20px;
+      }
+
+      #landing--button_wrapper a {
+        text-decoration: none;
+        margin-top: 16px;
+        border-radius: 30px;
+        padding: 15px 30px;
+        letter-spacing: 1px;
+        overflow: hidden;
+        font-family: "Lora";
+        font-weight: 600;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      #book-visit_button {
+        color: var(--darkest-blue);
+        background-color: var(--lightest-blue);
+        border: 1px solid var(--darkest-blue);
+      }
+
+      #book-visit_button:hover {
+        background-color: var(--light-blue);
+      }
+
+      #get-in-touch_button {
+        color: var(--lightest-blue);
+        background-color: var(--darker-blue);
+      }
+
+      #get-in-touch_button:hover {
+        background-color: var(--dark-blue);
+      }
+
+      #team--cards_section {
+        margin-top: 64px;
+        width: 80%;
+        height: 100%;
+        flex-wrap: wrap;
+        gap: 48px;
+      }
+
+      .team--card {
+        display: flex;
+        flex-direction: column;
+        height: 490px;
+        width: 340px;
+        background-color: var(--lightest-blue);
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 0 10px var(--light-blue);
+      }
+
+      .card--image_wrapper {
+        height: 53%;
+        background-color: var(--darker-blue);
+        border-bottom-left-radius: 30px;
+      }
+
+      .card--details_wrapper {
+        display: flex;
+        height: 47%;
+        background-color: var(--darker-blue);
+      }
+
+      .member--img {
+        height: 130px;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        padding: 4px;
+        object-fit: cover;
+        border: 3px solid var(--lightest-blue);
+      }
+
+      .card--details_content {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        border-top-right-radius: 30px;
+        background-color: var(--lightest-blue);
+        padding: 24px 0;
+
+        /* setting default font size and family */
+        font-family: "Lora", serif;
+        font-size: 14px;
+      }
+
+      .card--details_content h3 {
+        color: var(--darkest-blue);
+        font-family: "Cormorant", serif;
+        font-weight: bold;
+        font-size: 28px;
+        justify-self: flex-start;
+        margin: unset;
+        margin-bottom: 4px;
+      }
+
+      .card--details_content span {
+        color: var(--medium-blue);
+        color: #707070; /* setting default silver color */
+        font-weight: 500;
+      }
+
+      .card--details_content p {
+        margin: unset;
+        color: var(--darkest-blue);
+        font-weight: 600;
+        flex: 1;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .card--details_content a {
+        all: unset;
+        cursor: pointer;
+        color: var(--lightest-blue);
+        padding: 11px 22px;
+        background-color: var(--darker-blue);
+        border-radius: 10px;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .card--details_content a:hover {
+        background-color: var(--dark-blue);
+      }
+
+      #about--chronova_section {
+        width: 80%;
+        height: 100%;
+        flex-direction: column;
+      }
+
+      #about--chronova_section p {
+        color: var(--darker-blue);
+        font-family: "Lora", serif;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      #feedback--form_section {
+        width: 80%;
+        height: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      #feedback--form_container {
+        height: 670px;
+        width: 100%;
+        display: flex;
+        box-shadow: 0 0 10px var(--light-blue);
+      }
+
+      #feedback--form_section figure {
+        all: unset;
+        width: 50%;
+        height: 100%;
+        align-self: flex-start;
+      }
+
+      #feedback--form_section figure img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(50%);
+      }
+
+      #feedback--form_wrapper {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        background-color: var(--lightest-blue);
+        padding: 7% 5%;
+        padding-left: 4%;
+        font-family: "Cormorant", serif;
+      }
+
+      #feedback--form {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .required--symbol {
+        color: red;
+        margin-left: 4px;
+        opacity: 0;
+        user-select: none;
+        font-size: 22px;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .input_wrappers {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--darkest-blue);
+      }
+
+      .inputs {
+        all: unset;
+        height: 40px;
+        width: 95%;
+        margin: 5px 0;
+        border: 1px solid var(--medium-blue);
+        border-radius: 7px;
+        padding: 0 12px;
+        transition: border-color 0.3s ease-in-out;
+        color: var(--darkest-blue);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .inputs.empty--input {
+        border-color: red;
+      }
+
+      #name--input_wrapper {
+        width: 100%;
+        display: flex;
+        gap: 8.5%;
+      }
+
+      .name--wrappers {
+        width: 45%;
+      }
+
+      .name--inputs {
+        width: 92%;
+      }
+
+      #email--input_wrapper {
+        width: 100%;
+      }
+
+      #message--input_wrapper {
+        display: flex;
+        flex: 1;
+      }
+
+      #message-input {
+        flex: 1;
+      }
+
+      #message {
+        flex: 1;
+        padding: 12px;
+      }
+
+      #feedback--submit {
+        all: unset;
+        cursor: pointer;
+        width: 100%;
+        padding: 12px 0;
+        text-align: center;
+        background-color: var(--darker-blue);
+        color: var(--lightest-blue);
+        border-radius: 30px;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      #feedback--submit:hover {
+        background-color: var(--dark-blue);
+      }
+
+      #feedback--submit.error--submit {
+        background-color: rgb(158, 14, 14); /* to turn the button red on empty */
+      }
+
+      /* class to add to footer form through JS */
+      .highlight {
+        color: #ff8800; /* color that pops out among darkest blue and lightest blue */
+      }
+
+      #appointment--form_wrapper h1 {
+        transition: color 0.6s ease-in-out;
+      }
+    </style>
+
+    <title>Chronova | About Us</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="header--nav">
+        <div id="company--logo_wrapper">
+          <a href="../index.html" target="_self" id="company--logo">
+            <img src="../images/company--logo.png" alt="company_logo" id="logo--image" />
+            <span>Chronova</span>
+          </a>
+        </div>
+        <div id="nav--link_wrapper" class="center">
+          <ul>
+            <a href="../index.html" class="nav--link">
+              <li>HOME</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./product-page.html" class="nav--link">
+              <li>PRODUCTS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./blog-page.html" class="nav--link">
+              <li>BLOG</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./about-page.html" class="nav--link active">
+              <li>ABOUT US</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./review-page.html" class="nav--link">
+              <li>TESTIMONIALS</li>
+            </a>
+            <div class="link--seperator"></div>
+            <a href="./research-page.html" class="nav--link">
+              <li>RESEARCH</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="center">
+      <section id="about--landing_section" class="center">
+        <h1 class="main--headings" id="landing--heading">
+          &nbsp;We've got an entire team dedicated
+          <br />
+          to supporting you and your business!
+        </h1>
+        <p>Get help 24/7, with our award-winning support of payment experts.</p>
+        <div id="landing--button_wrapper">
+          <a href="#form" id="book-visit_button"> Book a Visit </a>
+          <a href="#feedback--form_section" id="get-in-touch_button"> Get in touch </a>
+        </div>
+      </section>
+      <section id="team--cards_section" class="center">
+        <div class="team--card">
+          <div class="card--image_wrapper center">
+            <img
+              src="../images/memberPhotos/arpan.jpg"
+              class="member--img"
+              alt="arpan's image" />
+          </div>
+          <div class="card--details_wrapper">
+            <div class="card--details_content center">
+              <h3>Arpan Pandey</h3>
+              <span style="color: #b8860b">Team Leader</span>
+              <hr style="margin: 12px 0; border-color: var(--light-blue)" />
+              <p>Homepage, About Page, CV Page,<br />Research Page, Comparision Page</p>
+              <a href="./cv-page.html?CVNumber=0">View CV</a>
+              <!-- href contains link with a value stored in a parameter -->
+            </div>
+          </div>
+        </div>
+        <div class="team--card">
+          <div class="card--image_wrapper center">
+            <img
+              src="../images/memberPhotos/member_placeholder.png"
+              class="member--img"
+              alt="member 2's image" />
+          </div>
+          <div class="card--details_wrapper">
+            <div class="card--details_content center">
+              <h3>Lorem Ipsum</h3>
+              <span>Team Member</span>
+              <hr style="margin: 12px 0; border-color: var(--light-blue)" />
+              <p>---</p>
+              <a href="./cv-page.html?CVNumber=1">View CV</a>
+              <!-- href contains link with a value stored in a parameter -->
+            </div>
+          </div>
+        </div>
+        <div class="team--card">
+          <div class="card--image_wrapper center">
+            <img
+              src="../images/memberPhotos/member_placeholder.png"
+              class="member--img"
+              alt="member 2's image" />
+          </div>
+          <div class="card--details_wrapper">
+            <div class="card--details_content center">
+              <h3>Lorem Ipsum</h3>
+              <span>Team Member</span>
+              <hr style="margin: 12px 0; border-color: var(--light-blue)" />
+              <p>---</p>
+              <a href="./cv-page.html?CVNumber=2">View CV</a>
+              <!-- href contains link with a value stored in a parameter -->
+            </div>
+          </div>
+        </div>
+        <div class="team--card">
+          <div class="card--image_wrapper center">
+            <img
+              src="../images/memberPhotos/member_placeholder.png"
+              class="member--img"
+              alt="member 2's image" />
+          </div>
+          <div class="card--details_wrapper">
+            <div class="card--details_content center">
+              <h3>Lorem Ipsum</h3>
+              <span>Team Member</span>
+              <hr style="margin: 12px 0; border-color: var(--light-blue)" />
+              <p>---</p>
+              <a href="./cv-page.html?CVNumber=3">View CV</a>
+              <!-- href contains link with a value stored in a parameter -->
+            </div>
+          </div>
+        </div>
+        <div class="team--card">
+          <div class="card--image_wrapper center">
+            <img
+              src="../images/memberPhotos/member_placeholder.png"
+              class="member--img"
+              alt="member 2's image" />
+          </div>
+          <div class="card--details_wrapper">
+            <div class="card--details_content center">
+              <h3>Lorem Ipsum</h3>
+              <span>Team Member</span>
+              <hr style="margin: 12px 0; border-color: var(--light-blue)" />
+              <p>---</p>
+              <a href="./cv-page.html?CVNumber=4">View CV</a>
+              <!-- href contains link with a value stored in a parameter -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <section id="about--chronova_section" class="center">
+        <h2 class="main--headings">About Chronova</h2>
+        <p>
+          Chronova, founded by five ambitious students from Islington College, proudly
+          stands as Nepal’s first watch company to achieve remarkable global recognition.
+          With over 100,000 happy customers and a presence in 30+ countries, we’ve
+          shattered barriers and redefined what a Nepali brand can accomplish. Blending
+          timeless craftsmanship with modern innovation, Chronova has become a symbol of
+          Nepal’s potential on the global stage. As pioneers in the Nepali watch industry,
+          we are driven by our passion for excellence and our commitment to bringing
+          world-class timepieces to the wrists of customers worldwide.
+          <br /><br />
+          At Chronova, we believe every timepiece tells a story. Our designs are inspired
+          by Nepal’s rich heritage, combined with cutting-edge technology to create
+          watches that resonate with both tradition and modernity. By staying true to our
+          roots while embracing global trends, we aim to not only meet but exceed the
+          expectations of watch enthusiasts everywhere. Chronova is more than just a
+          brand—it’s a movement, representing Nepal’s craftsmanship and innovation on a
+          global platform.
+        </p>
+        <span style="margin-top: 20px; color: var(--dark-blue)"
+          >(^^ AI generated gibberish ^^)</span
+        >
+      </section>
+      <hr />
+      <section id="feedback--form_section" class="center">
+        <h2 class="main--headings">We Value Your Feedback!</h2>
+        <div id="feedback--form_container">
+          <figure>
+            <img src="../images/feedbackForm/form--image.jpg" alt="feedbakc form image" />
+          </figure>
+          <div id="feedback--form_wrapper">
+            <form id="feedback--form">
+              <div id="name--input_wrapper">
+                <div id="firstname-input" class="name--wrappers">
+                  <label for="firstName"
+                    >First name<span class="required--symbol">*</span></label
+                  >
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    name="firstName"
+                    id="firstName"
+                    class="inputs name--inputs" />
+                </div>
+                <div id="lastname-input" class="name--wrappers">
+                  <label for="lastName"
+                    >Last name<span class="required--symbol">*</span></label
+                  >
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    name="lastName"
+                    id="lastName"
+                    class="inputs name--inputs" />
+                </div>
+              </div>
+              <div id="email--input_wrapper">
+                <div id="email-input" class="input_wrappers">
+                  <label for="email">Email<span class="required--symbol">*</span></label>
+                  <input
+                    type="email"
+                    placeholder="eg: name@domain.com"
+                    name="email"
+                    id="email"
+                    class="inputs" />
+                </div>
+              </div>
+              <div id="subject--input_wrapper">
+                <div id="subject-input" class="input_wrappers">
+                  <label for="subject"
+                    >Subject<span class="required--symbol">*</span></label
+                  >
+                  <input
+                    type="text"
+                    placeholder="Enter subject"
+                    name="subject"
+                    id="subject"
+                    class="inputs" />
+                </div>
+              </div>
+              <div id="message--input_wrapper">
+                <div id="message-input" class="input_wrappers">
+                  <label for="message"
+                    >Message<span class="required--symbol">*</span></label
+                  >
+                  <textarea
+                    placeholder="Leave us a message"
+                    name="message"
+                    id="message"
+                    class="inputs"></textarea>
+                </div>
+              </div>
+              <input type="submit" value="Send Message" id="feedback--submit" />
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="popup" id="sent--message">
+        Message has been sent!
+        <button onclick="closeSentPopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="submitted--message">
+        Appointment Request Received!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+      <div class="popup" id="copied--message">
+        Copied to Clipboard!
+        <button onclick="closePopup()" id="popup--close_button">✖</button>
+      </div>
+    </main>
+    <footer>
+      <div id="company--icon_stamp">
+        <img src="../images/company--logo.png" alt="company--icon_stamp" />
+      </div>
+      <section id="footer--content_section" class="center">
+        <section id="footer--content">
+          <div id="company--detail_wrapper">
+            <h3 id="company--name">CHRONOVA</h3>
+            <p>
+              " Crafting timeless precision and unparalleled elegance for every moment. "
+            </p>
+            <div id="company--contacts">
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-phone.png"
+                  alt="footer-phone"
+                  onclick="copyNumber()" />
+                <span class="contacts--text" onclick="copyNumber()"
+                  >+977 987-6543210</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center" onclick="copyEmail()">
+                <img src="../images/footerIcons/footer-mail.png" alt="footer-mail" />
+                <span class="contacts--text" onclick="copyEmail()"
+                  >chronova@gmail.com</span
+                >
+                <!-- copyEmail() is a function that copies email to clipboard -->
+              </span>
+              <span class="contacts center">
+                <img
+                  src="../images/footerIcons/footer-address.png"
+                  alt="footer-address" />
+                Durbar Marg, Kathmandu
+              </span>
+            </div>
+          </div>
+          <nav id="footer-nav">
+            <div id="quick--links">
+              <h3 class="footer--headings">Quick Links</h3>
+              <ul>
+                <a href="../index.html" class="page--links">
+                  <li>Home</li>
+                </a>
+                <a href="./product-page.html" class="page--links">
+                  <li>Products</li>
+                </a>
+                <a href="./blog-page.html" class="page--links">
+                  <li>Blog</li>
+                </a>
+                <a href="./about-page.html" class="page--links">
+                  <li>About Us</li>
+                </a>
+                <a href="./review-page.html" class="page--links">
+                  <li>Testimonials</li>
+                </a>
+                <a href="./research-page.html" class="page--links">
+                  <li>Research</li>
+                </a>
+              </ul>
+            </div>
+            <div id="appointment--form_wrapper">
+              <h3 class="footer--headings">Experience in Person?</h3>
+              <p>We’ll get back to you shortly.</p>
+              <form action="#" id="form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter Email Address"
+                  id="form--input_email" />
+                <input type="submit" id="form--input_submit" value="→" />
+              </form>
+              <span id="form--empty_message">A valid email address is required.</span>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section id="footer--copyright_section" class="center">
+        <span>&copy; Chronova | 1998 | All Rights Reserved.</span>
+      </section>
+    </footer>
+  </body>
+  <script>
+    //FOR BOOK VISIT BUTTON FUNCTIONALITY
+
+    const bookVisitButton = document.querySelector("#book-visit_button");
+    const footerFormHeading = document.querySelector("#footer--form_heading");
+
+    bookVisitButton.addEventListener("click", () => {
+      setTimeout(() => {
+        footerFormHeading.classList.add("highlight");
+      }, 100); // adding the class that changes color, after a delay of 100ms
+
+      setTimeout(() => {
+        footerFormHeading.classList.remove("highlight");
+      }, 2100); // returning the heading back to it's original state after 2 seconds of displaying
+    });
+
+    // FEEDBACK FORM VALIDATION
+
+    const feedbackForm = document.querySelector("#feedback--form");
+    const fields = document.querySelectorAll(".inputs");
+    const feedbackSumbit = document.querySelector("#feedback--submit");
+    const sentButton = document.querySelector("#feedback--submit");
+    const sentMessage = document.querySelector("#sent--message");
+    const requiredSymbol = document.querySelectorAll(".required--symbol");
+
+    // real time validation for each empty input
+    fields.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+          requiredSymbol[index].style.opacity = "0"; // invisible symbol
+          input.classList.remove("empty--input"); // normal border
+        } else {
+          requiredSymbol[index].style.opacity = "1"; //visible symbol
+          input.classList.add("empty--input"); // red border
+        }
+      });
+    });
+
+    // Submit event
+    feedbackForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // preventing page reload
+
+      let allFilled = true;
+
+      fields.forEach((input, index) => {
+        if (input.value.trim() === "") {
+          requiredSymbol[index].style.opacity = "1"; //visible symbol
+          input.classList.add("empty--input"); // red border
+          allFilled = false; // marking false if any input is empty
+          feedbackSumbit.classList.add("error--submit");
+          setTimeout(() => {
+            feedbackSumbit.classList.remove("error--submit");
+          }, 1500);
+        }
+      });
+
+      if (allFilled) {
+        feedbackForm.reset(); // resetting form contents
+        formInputReset(); // resetting styles
+        sentMessage.classList.add("activate-message");
+        setTimeout(() => {
+          sentMessage.classList.remove("activate-message");
+        }, 3000);
+      }
+    });
+
+    // reset styles function
+    function formInputReset() {
+      fields.forEach((input, index) => {
+        requiredSymbol[index].style.opacity = "0"; // invisible symbol
+        input.classList.remove("empty--input"); // normal border
+      });
+    }
+
+    // function that runs when sent message's close button is clicked
+    function closeSentPopup() {
+      sentMessage.classList.remove("activate-message"); //puts the message outside view
+    }
+  </script>
+</html>
